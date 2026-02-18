@@ -13,7 +13,7 @@ figures_dir <- file.path(root, "output", "figures")
 #### Figure 1: Expansion of Uber in the United States (2010-2016) ####
 #### ____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -84,12 +84,12 @@ ggplot() +
 ggsave(file = paste0(macdir, "map_tratment_groups.pdf"), width = 10, height = 5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### ..................................................................... ####
 #### Table 1: Values of key variables across treatment groups ####
 #### ..................................................................... ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load packages ####
 library(conflicted)
@@ -174,14 +174,14 @@ kable(latex, format = "latex", booktabs = TRUE, row.names = FALSE,
   kable_styling(latex_options = c("HOLD_position"))
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 
 #### ..................................................................... ####
 #### Table 2: Environmental conditions across treatment groups ####
 #### ..................................................................... ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load packages ####
 library(conflicted)
@@ -267,23 +267,22 @@ kable(latex, format = "latex", booktabs = TRUE, row.names = FALSE,
   kable_styling(latex_options = c("HOLD_position"))
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 
-head(table)
-plot = filter(table, variable %in% c("g) Population M."), enter_year <= 2016)
-plot = mutate(plot, sum = cumsum(value))
-
-
-ggplot(plot) +
-  geom_line(aes(x = enter_year, y = sum, group = 1))
-unique(table$variable)
+## Debugging code removed (leftover from development)
+## head(table)
+## plot = filter(table, variable %in% c("g) Population M."), enter_year <= 2016)
+## plot = mutate(plot, sum = cumsum(value))
+## ggplot(plot) +
+##   geom_line(aes(x = enter_year, y = sum, group = 1))
+## unique(table$variable)
 
 #### ____________________________________________________________________ ####
 #### Figure 2: Pre-treatment AQI for each treatment cohort ####
 #### _____________________________________________________________________####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -367,13 +366,13 @@ ggplot(plot %>% filter(var == "avg")) +
 ggsave(paste0(macdir, "common_trends_tg.png"), width = 8, height = 5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ____________________________________________________________________ ####
 #### Figure 3: Dynamic estimates for the effect of Uber on the AQI ####
 #### _____________________________________________________________________####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -423,12 +422,12 @@ ggplot(est) +
 ggsave(paste0(macdir, "sdid_dynamic.png"), width = 6, height = 3.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### ..................................................................... ####
 #### Estimates across the distribution ####
 #### ..................................................................... ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -507,13 +506,13 @@ ggplot(est %>% filter(spec == "(2)", measure != "min")) +
 ggsave(paste0(mac_eth, "est_dist.png"), width = 9, height = 3)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 ### ____________________________________________________________________ ####
 #### Figure 5: TNCs in New York City####
 #### ____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls())
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores")))
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -591,7 +590,7 @@ ggplot(data) +
 ggsave(paste0(macdir, "nycms_freq.png"),width = 7, height = 3.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 
 
@@ -599,7 +598,7 @@ rm(list = ls()); gc()
 #### Figure 6: Fuel efficiency, gasoline costs, and range of Toyota Corolla models 2005-2017####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(NatParksPalettes)
@@ -656,13 +655,13 @@ ggplot(plot %>% filter(year %in% c(2005:2016))) +
 ggsave(file = paste0(macdir, "camry_fuel_efficiency.png"), width = 7, height = 2.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure 7: Effects on the share of gasoline and clean vehicles in California ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -778,4 +777,4 @@ ggplot(sum) +
 ggsave(paste0(macdir, "share_gas_dynamic.png"), width = 8, height = 4.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()

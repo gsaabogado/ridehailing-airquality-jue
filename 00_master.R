@@ -43,7 +43,7 @@ if (install_packages) {
     # Tables
     "mmtable2", "kableExtra", "gt", "texreg",
     # Other
-    "bacondecomp", "lfe", "haven", "arrow"
+    "bacondecomp", "lfe", "haven", "arrow", "writexl"
   )
 
   installed <- rownames(installed.packages())

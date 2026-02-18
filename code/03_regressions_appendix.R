@@ -12,7 +12,7 @@ setwd(root)
 #### _____________________________________________________________________ ####
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -20,6 +20,7 @@ library(data.table)
 library(tidyverse)
 library(fixest)
 library(broom)
+library(bacondecomp)
 
 #### Clear the space ####
 conflict_prefer("filter", "dplyr")
@@ -72,13 +73,13 @@ bcw <- bacon_decomp %>%
 write_rds(bcw, file = "03_gen/09_revision/twfe_cohort_weights.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure E2 (ETWFE): Estimate the weights of each cohort for the E-TWFE regression ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -149,14 +150,14 @@ etwfe_w <- coeff_df %>%
 write_rds(etwfe_w, file = "03_gen/09_revision/etwfe_cohort_weights.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure E2 (SADD): Estimate the weights for the SA-DD regression ####
 #### _____________________________________________________________________ ####
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(fixest)
@@ -263,13 +264,13 @@ summary(est_sa, agg = "att")
 write_rds(df_weights, file = "03_gen/09_revision/sadd_cohort_weights.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table G1: Effects of Uber on the AQI (Heterogeneous Clustering) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(data.table)
@@ -360,13 +361,13 @@ sum
 write_rds(sum, file = "03_gen/05_results/twfe_cluster.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure G6: TWFE Dynamic ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -410,13 +411,13 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/twfe_dynamic.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure G6: E-TWFE Dynamic ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -458,13 +459,13 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/etwfe_dynamic.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure G6: SA-DD Dynamic ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -512,14 +513,14 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/sadd_dynamic.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table H5-Cols 4-6: Controlling for gasoline prices and the gas to coal switch ####
 #### _____________________________________________________________________ ####
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(fixest)
@@ -562,6 +563,9 @@ data = data %>% mutate(statesfips = substr(fips, 1,2) %>% as.numeric(.))
 data = left_join(data, gas)
 data = left_join(data, pp_fips %>% mutate(year = as.numeric(year)))
 data = left_join(data, pp_state %>% mutate(year = as.numeric(year)))
+
+#### Scale generation from MWh to TWh for numerical stability (E-TWFE VCOV) ####
+data = mutate(data, netgen_st = netgen_st / 1e6)
 
 #### Transform NAs in state generation to zeros ####
 data = mutate_at(data, vars(netgen_st, c_share_st, ng_share_st), function(x)
@@ -620,13 +624,13 @@ sum
 write_rds(sum, file = "03_gen/05_results/gasoline_and_st_pp_robust.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Table H5-Cols 1-3: Controlling for gasoline prices and the gas to coal switch ####
 #### _____________________________________________________________________ ####
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(fixest)
@@ -669,6 +673,9 @@ data = data %>% mutate(statesfips = substr(fips, 1,2) %>% as.numeric(.))
 data = left_join(data, gas)
 data = left_join(data, pp_fips %>% mutate(year = as.numeric(year)))
 data = left_join(data, pp_state %>% mutate(year = as.numeric(year)))
+
+#### Scale generation from MWh to TWh for numerical stability (E-TWFE VCOV) ####
+data = mutate(data, netgen_fips = netgen_fips / 1e6, c_fips = c_fips / 1e6, ng_fips = ng_fips / 1e6)
 
 #### Substitute NAs with counties with no power plants to zero ####
 data = mutate_at(data, vars(netgen_fips, c_fips, ng_fips, c_share_fips, ng_share_fips), function(x)
@@ -727,14 +734,14 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/gasoline_and_fips_pp_robust.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table H6: Balancing regressions for selected variables ####
 #### _____________________________________________________________________ ####
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(fixest)
@@ -949,13 +956,13 @@ sum
 write_rds(sum, file = "03_gen/05_results/balance_selected_vars.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table H7: Macro-covariates balancing regressions ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -1051,12 +1058,12 @@ sum
 write_rds(sum, file = "03_gen/05_results/macro_reg.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Table H8: Testing for heterogeneous pre-trends for different controls ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -1122,13 +1129,13 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/macro_trend_test.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table H9 -- Cols (1) and (2): Effects of Uber on PM2.5 ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -1189,13 +1196,13 @@ sum
 write_rds(sum, file = "03_gen/05_results/did_pm25.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table H9 -- Cols (2) and (4): Effects of Uber on PM2.5 (SDiD) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -1365,14 +1372,14 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/sdid_pm25.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ____________________________________________________________________ ####
 #### Table H10 -- Cols (1) to (3): Effects only with treated units from 2012 ####
 #### Table H11 -- Cols (4) to (6): Effects only with treated units from 2012 ####
 #### ____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(fixest)
@@ -1438,12 +1445,12 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/only_2012_2016_cohorts.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Table H10 -- Cols (4) and (5): Effects only with not-yet treated ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(fixest)
@@ -1510,13 +1517,13 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/only_nyt_controls.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ____________________________________________________________________ ####
 #### Table H11 -- Cols (1) to (3): Effects using the enter year of Uber x ####
 #### ____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(fixest)
@@ -1598,13 +1605,13 @@ sum
 write_rds(sum, file = "03_gen/05_results/introduction_uber_x.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table H12 -- Cols (1) to (3): Estimates across different granularities ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -1676,13 +1683,13 @@ sum
 write_rds(sum, file = "03_gen/05_results/att_granularity.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 ### _____________________________________________________________________ ####
 #### Table H12 -- Cols (4) to (6): Estimates with stacked panel ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -1765,13 +1772,13 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/att_yearly_rolling.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table I.19: Effects for share of gas and green cars in Cal. ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(tidyverse)
@@ -1912,14 +1919,14 @@ sum
 write_rds(sum, file = "03_gen/05_results/did_gas_share.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 
 #### _____________________________________________________________________ ####
 #### Figure J.1 (left). Heterogeneous effects by weekday (annual) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(tidyverse)
@@ -1981,13 +1988,13 @@ glimpse(sum)
 write_rds(sum, file = "03_gen/05_results/twfe_yearly_weekdays.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure J.1 (right). Heterogeneous effects by weekday (daily) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(tidyverse)
@@ -2052,13 +2059,13 @@ glimpse(sum)
 write_rds(sum, file = "03_gen/05_results/twfe_daily_weekdays.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure J.2 (left). Heterogeneous effects by month (annual) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(tidyverse)
@@ -2121,13 +2128,13 @@ glimpse(sum)
 write_rds(sum, file = "03_gen/05_results/twfe_yearly_months.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure J.2 (right). Heterogeneous effects by month (daily) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the data ####
 data = read_rds("03_gen/04_reg/daily_reg.rds")
@@ -2184,13 +2191,13 @@ glimpse(sum)
 write_rds(sum, file = "03_gen/05_results/twfe_daily_months.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure J.4 (left): Heterogeneous effects by hour (Annual Average) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -2248,14 +2255,14 @@ glimpse(sum)
 write_rds(sum, file = "03_gen/09_revision/nc_yearly_diff_twfe.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure J.4 (right): Heterogeneous effects by hour (Hourly Average) ####
 #### NOTE: This regression requires ~70GB memory (61M rows). Run on HPC. ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -2317,13 +2324,13 @@ glimpse(sum)
 write_rds(sum, file = "03_gen/09_revision/nc_hourly_diff_twfe.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table J.1 (Cols 1-3): Effect of Uber on the NowCast AQI (Annual)   ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -2376,14 +2383,14 @@ sum_annual$N.Periods = length(unique(yearly$year))
 write_rds(sum_annual, file = "03_gen/09_revision/nc_yearly_twfe.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table J.1 (Cols 4-6): Effect of Uber on the NowCast AQI (Hourly)   ####
 #### NOTE: This regression requires ~60GB memory (61M rows). Run on HPC. ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -2445,7 +2452,7 @@ sum_hourly$N.Periods = length(unique(as.character(data_filtered$date)))*24
 write_rds(sum_hourly, file = "03_gen/09_revision/nc_hourly_twfe.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Tables I.15 & I.16: NYC Taxi Autoregressive Models                   ####
@@ -2459,7 +2466,7 @@ rm(list = ls()); gc()
 #### R's arima() uses Hessian-based standard errors.
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(tidyverse)
@@ -2569,4 +2576,4 @@ sum_i16 <- data.frame(
 write_rds(list(i15 = sum_i15, i16 = sum_i16), file = "03_gen/09_revision/nyc_taxi_ar.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()

@@ -11,7 +11,7 @@ figures_dir <- file.path(root, "output", "figures")
 #### Figure C1 -- Diffusion of Uber ####
 #### ____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -66,12 +66,12 @@ ggplot(plot) +
 ggsave(paste0(macdir, "uber_difusion.png"),width = 7, height = 3)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### ____________________________________________________________________ ####
 #### Figure C2: Air quality across the United States ####
 #### ____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -137,12 +137,12 @@ avg_aqi = ggplot() +
 ggsave(file = paste0(macdir, "map_aqi.pdf"), width = 10, height = 5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### ____________________________________________________________________ ####
 #### Figure C3: Changes in air quality across the United States ####
 #### ____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -209,12 +209,12 @@ ggplot() +
 ggsave(file = paste0(macdir, "map_aqi_diff.pdf"), width = 10, height = 5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Figure C4: Annual enter week of Uber across all metropolitan areas ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -287,12 +287,12 @@ ggsave(file = paste0(macdir, "week_enter_date.png"), width = 7, height = 3.5)
 
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### ____________________________________________________________________ ####
 #### Figure E1: Goodman-Bacon decomposition on the effects of Uber on the AQI ####
 #### ____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -362,12 +362,12 @@ ggplot(df_bacon) +
 ggsave(file = paste0(macdir, "BaconDecomposition.png"), width = 7, height = 3.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Figure E2: Relative weights of each cohort when estimating the ATT with different estimators ####
 #### _____________________________________________________________________ ####
 #### clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -426,12 +426,12 @@ ggplot(plot) +
 ggsave(file = paste0(macdir, "estimator_weights.png"), width = 7, height = 3.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Figure G1: Effect of Uber on the AQI for different sample restrictions ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -534,13 +534,13 @@ ggplot(sum %>%filter(rest != "e %in% '(-1, 5)'"),
 ggsave(paste0(macdir, "restricted_robust.png"), width = 8, height = 4.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ____________________________________________________________________ ####
 #### Figure G2: Pretreatment AQI for each treatment cohort with SDiD ####
 #### _____________________________________________________________________####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -633,8 +633,11 @@ plot = data |>
 
 #### Re-scale the time weights to the smallest of the synthetic values ####
 plot = plot |> group_by(var, tg) |>
-  mutate(tw2 = metan::resca(data = x, values = tw, new_min = min(value, na.rm = T)-1,
-                            new_max = min(value, na.rm = T) + 2.5, na.rm = T, keep = T)) |>
+  mutate(tw2 = {
+    vmin <- min(tw, na.rm = TRUE); vmax <- max(tw, na.rm = TRUE)
+    nmin <- min(value, na.rm = TRUE) - 1; nmax <- min(value, na.rm = TRUE) + 2.5
+    ifelse(is.na(tw), tw, nmin + (tw - vmin) / (vmax - vmin) * (nmax - nmin))
+  }) |>
   mutate(min = min(value, na.rm = T) - 1)
 
 #### Simplify the plot to only one facet ####
@@ -683,13 +686,13 @@ ggplot(plot %>% filter(var == "avg")) +
 ggsave(paste0(macdir, "common_trends_tg_sdid.png"), width = 8, height = 5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Figure G3: Short-term change in the distribution of the AQI in treated counties ####
 #### _____________________________________________________________________ ####
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -756,12 +759,12 @@ ggplot(plot) +
 ggsave(paste0(macdir, "dist_short_ts.png"), width = 7, height = 2.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Figure G4: Density distribution of the AQI for e ∈ (−1, 0, 1) for treated counties ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -810,12 +813,12 @@ ggplot(plot) +
 ggsave(paste0(macdir, "density_aqi_short_ts.png"), width = 6, height = 2.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### ..................................................................... ####
 #### Figure G5: Effect of Uber on AQI alerts by stringency ####
 #### ..................................................................... ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -890,12 +893,12 @@ ggplot(est) +
 ggsave(paste0(macdir, "alert_level_est.png"),  width = 8, height = 3)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### ____________________________________________________________________ ####
 #### Dynamic ATT ####
 #### _____________________________________________________________________####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -946,12 +949,12 @@ ggplot(est) +
 ggsave(paste0(macdir, "raw_dynamic.png"), width = 6, height = 3.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### ____________________________________________________________________ ####
 #### Figures H7 and H8: PM25 Pollution Maps (Appendix) ####
 #### ____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -1053,12 +1056,12 @@ ggsave(msa, file = paste0(macdir, "ACAGMAPmetro.pdf"), width = 10, height = 5)
 ggsave(all_counties, file = paste0(macdir, "ACAGMAP.pdf"), width = 10, height = 5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Common trends plot for PM25 (Appendix) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -1157,8 +1160,11 @@ plot = data |>
 
 #### Re-scale the time weights to the smallest of the synthetic values ####
 plot = plot |> group_by(var, tg) |>
-  mutate(tw2 = metan::resca(data = x, values = tw, new_min = min(value, na.rm = T)-1,
-                            new_max = min(value, na.rm = T) + 0.5, na.rm = T, keep = T)) |>
+  mutate(tw2 = {
+    vmin <- min(tw, na.rm = TRUE); vmax <- max(tw, na.rm = TRUE)
+    nmin <- min(value, na.rm = TRUE) - 1; nmax <- min(value, na.rm = TRUE) + 0.5
+    ifelse(is.na(tw), tw, nmin + (tw - vmin) / (vmax - vmin) * (nmax - nmin))
+  }) |>
   mutate(min = min(value, na.rm = T) - 1)
 
 #### Simplify the plot to only one facet ####
@@ -1207,14 +1213,14 @@ ggplot(plot) +
 ggsave(paste0(macdir, "common_trends_pm25.png"), width = 7, height = 3.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 
 #### _____________________________________________________________________ ####
 #### Figure H11: Placebo with the Never Treated Group (Appendix) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -1286,13 +1292,13 @@ ggplot(placebo %>% mutate(btr = as.numeric(btr))) +
 ggsave(paste0(macdir, "PlaceboEst.png"), width = 5, height = 3.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure I11: Trends in commuting patterns ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -1400,8 +1406,11 @@ plot = data |>
 
 #### Re-scale the time weights to the smallest of the synthetic values ####
 plot = plot |> group_by(var, tg) |>
-  mutate(tw2 = metan::resca(data = x, values = tw, new_min = min(value, na.rm = T)-1,
-                            new_max = min(value, na.rm = T) + 0.5, na.rm = T, keep = T)) |>
+  mutate(tw2 = {
+    vmin <- min(tw, na.rm = TRUE); vmax <- max(tw, na.rm = TRUE)
+    nmin <- min(value, na.rm = TRUE) - 1; nmax <- min(value, na.rm = TRUE) + 0.5
+    ifelse(is.na(tw), tw, nmin + (tw - vmin) / (vmax - vmin) * (nmax - nmin))
+  }) |>
   mutate(min = min(value, na.rm = T) - 1)
 
 #### Simplify the plot to only one facet ####
@@ -1451,12 +1460,12 @@ ggplot(plot %>% filter(var %in% c("Private Cars", "Ride Hailing", "Public Transp
 ggsave(paste0(macdir,"common_trends_commute.png"), width = 9, height = 5.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Figure I12: Sample restriction in commuting analysis ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -1521,13 +1530,13 @@ ggplot(plot) +
 ggsave(paste0(macdir, "commute_sample_rest.png"), width = 8, height = 2.75)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Figure I13: Effect of Uber on commuting behavior for alternative estimators ####
 #### _____________________________________________________________________ ####
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -1600,12 +1609,12 @@ ggplot(plot) +
 ggsave(paste0(macdir, "est_commute_other.png"), width = 7, height = 2.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### ____________________________________________________________________ ####
 #### Figure I14: Plot the average number of taxis in NYC (Appendix) ####
 #### _____________________________________________________________________####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -1672,12 +1681,12 @@ ggplot(data) +
 ggsave(paste0(macdir, "TaxiTrips.png"), width = 8, height = 2.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### ____________________________________________________________________ ####
 #### Figure I15: Event-time estimates for the No. of daily yellow taxi trips in NYC ####
 #### _____________________________________________________________________####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add your directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -1853,13 +1862,13 @@ ggsave(filename = paste0(macdir, "event_time_taxis.png"),
        plot = p_final, width = 8, height = 3.5)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure I.16: Trends in gasoline consumption ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -1951,13 +1960,13 @@ ggplot(plot) +
 ggsave(paste0(macdir, "common_trends_gas.png"), width = 8, height = 4)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ____________________________________________________________________ ####
 #### Figure J.1: Heterogeneous effects by weekday #### ####
 #### _____________________________________________________________________####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -1998,13 +2007,13 @@ ggsave(paste0(macdir, "weekday_effects.png"),
        width = 7, height = 3)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ____________________________________________________________________ ####
 #### Figure J.2: Heterogeneous effects by month #### ####
 #### _____________________________________________________________________####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -2045,13 +2054,13 @@ ggsave(paste0(macdir, "monthly_effects.png"),
        width = 7, height = 3)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ____________________________________________________________________ ####
 #### Figure J.3: Average NowCast AQI per hour of the day ####
 #### _____________________________________________________________________####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -2064,8 +2073,8 @@ data = read_rds("03_gen/09_revision/hourly_reg_aqi.rds")
 
 #### Calculate the average NowCast by hour of the day ####
 plot = data %>% group_by(hour) %>%
-  summarise(`NowCast AQI` = mean(now_cast, na.rm = T),
-            sd = sd(now_cast, na.rm = T))
+  summarise(`NowCast AQI` = mean(NowCast, na.rm = T),
+            sd = sd(NowCast, na.rm = T))
 plot = mutate(plot, hour = as.numeric(hour))
 
 #### Plot the average NowCast by hour of the day ####
@@ -2087,13 +2096,13 @@ ggplot(plot) +
 ggsave(paste0(macdir, "HourlyTs.png"), width = 5, height = 4)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ____________________________________________________________________ ####
 #### Figure J.4: Heterogeneous treatment effects by hour of the day ####
 #### _____________________________________________________________________####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the directory paths ####
 macdir <- paste0(figures_dir, "/")
@@ -2131,13 +2140,13 @@ ggplot(sum) + geom_point(aes(x = var, y = est)) +
 ggsave(paste0(macdir, "hourly_effects.png"), width = 7, height = 3)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table I13: NHTS trip-shares by purpose of travel                      ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the necessary packages ####
 library(haven)
@@ -2236,13 +2245,13 @@ cat("\nMax absolute differences vs published table:\n")
 print(as.data.frame(diffs), digits = 3)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table I14: NHTS trip-shares by mode (large urban areas)               ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the necessary packages ####
 library(haven)
@@ -2336,4 +2345,4 @@ cat("\nMax absolute differences vs published table:\n")
 print(as.data.frame(diffs), digits = 3)
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()

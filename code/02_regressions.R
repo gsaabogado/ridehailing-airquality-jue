@@ -12,7 +12,7 @@ setwd(root)
 #### Table H2: Robustness checks - Effects of Uber on the air quality index (TWFE) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -97,14 +97,14 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/twfe.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table 3 - column 2: Effects of Uber on the air quality index (ETWFE) ####
 #### Table H3: Robustness checks - Effects of Uber on the air quality index (ETWFE) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -182,14 +182,14 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/etwfe.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table 3 - column 3: Effects of Uber on the air quality index (SADD) ####
 #### Table H3: Robustness checks - Effects of Uber on the air quality index (SADD) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(tidyverse)
@@ -266,14 +266,14 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/sadd.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table 3 - column 4: Synthetic TWFE-DD model ####
 #### Table H4: Robustness checks - Synthetic TWFE-DD model ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -435,14 +435,14 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/sdid.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table 3 - column 5: Synthetic ETWFE-DD model ####
 #### Table H4: Robustness checks - Synthetic ETWFE-DD model ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Set the working directory ####
 setwd(root)
@@ -626,14 +626,14 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/sdid_etwfe.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Table 3 - column 6: Synthetic SADD model ####
 #### Table H4: Robustness checks - Synthetic SADD model ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Set the working directory ####
 setwd(root)
@@ -809,13 +809,13 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/sdid_sadd.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure 3: Dynamic estimates for the effect of Uber on the AQI (TWFEs) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -941,12 +941,12 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/sdid_twfe_dynamic.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Figure 3: Dynamic estimates for the effect of Uber on the AQI (ETWFEs) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Set the working directory ####
 setwd(root)
@@ -1085,13 +1085,13 @@ sum = filter(sum, score > -6); sum
 write_rds(sum, file = "03_gen/05_results/sdid_etwfe_dynamic.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Figure 3: Dynamic estimates for the effect of Uber on the AQI (SADD) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(conflicted)
@@ -1221,12 +1221,12 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/sdid_sadd_dynamic.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Table 4 - Columns 1-3:  Effects of Uber on the number of air quality alerts (AQI > 100)####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(tidyverse)
@@ -1305,14 +1305,14 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/raw_alerts.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 
 #### _____________________________________________________________________ ####
 #### Table 4 - Columns 4-6: SDiD For Air Quality Alerts ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(tidyverse)
@@ -1492,14 +1492,14 @@ sum
 write_rds(sum, file = "03_gen/05_results/sdid_alerts.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 
 #### _____________________________________________________________________ ####
 #### Table 5 -- Specs 1-2 Effect of Uber on the amount of light-duty vehicles ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls());gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores")));gc()
 
 #### Load packages ####
 library(tidyverse)
@@ -1612,12 +1612,12 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/raw_hh_vehicles.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Table 5 -- Specs 3 Effect of Uber on the amount of light-duty vehicles ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls());gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores")));gc()
 
 #### Load packages ####
 library(tidyverse)
@@ -1809,7 +1809,7 @@ sum %>% head(.)
 write_rds(sum, file = "03_gen/05_results/synth_hh_vehicles.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 
 #### _____________________________________________________________________ ####
@@ -1817,7 +1817,7 @@ rm(list = ls()); gc()
 #### Figure I13 -- Effect of Uber on commuting behavior (robustness)  ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(tidyverse)
@@ -1935,13 +1935,13 @@ sum %>% filter(grepl("ETWFE", spec))
 write_rds(sum, file = "03_gen/05_results/did_commuting_ols.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 #### _____________________________________________________________________ ####
 #### Table 6 - Spec 5 Effect of Uber on commuting behavior (SDiD) ####
 #### Figure I13 -- Effect of Uber on commuting behavior (robustness)  ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Set the working directory ####
 setwd(root)
@@ -2127,13 +2127,13 @@ sum %>% filter(grepl("ETWFE", spec))
 write_rds(sum, file = "03_gen/05_results/sdid_commuting_ols.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 
 #### _____________________________________________________________________ ####
 #### Table 6 - Spec 5 Effect of Uber on commuting behavior (SDiD-restricted) ####
 #### _____________________________________________________________________ ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Set the working directory ####
 setwd(root)
@@ -2321,7 +2321,7 @@ write_rds(sum, file = "03_gen/05_results/sdid_commuting_rest_ols.rds")
 #### Table 8: Effects of Uber on gasoline sales in California ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load the packages ####
 library(tidyverse)
@@ -2417,4 +2417,4 @@ sum
 write_rds(sum, file = "03_gen/05_results/did_gasoline.rds")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()

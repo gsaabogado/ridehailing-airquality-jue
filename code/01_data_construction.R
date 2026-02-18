@@ -11,7 +11,7 @@ if (!exists("root")) root <- getwd()
 ####                    SECTION A: uber.rds                               ####
 #### ===================================================================== ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the necessary packages ####
 library(conflicted)
@@ -204,13 +204,13 @@ if (nrow(mismatches) > 0) {
 cat("=== uber.rds construction complete ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ===================================================================== ####
 ####                    SECTION A2: uber_x.rds                            ####
 #### ===================================================================== ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the necessary packages ####
 library(conflicted)
@@ -342,13 +342,13 @@ cat("Enter date matches:", both_match + both_na, "out of", nrow(merged), "\n")
 cat("=== uber_x.rds construction complete ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ===================================================================== ####
 ####                    SECTION B: macro.rds                              ####
 #### ===================================================================== ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the necessary packages ####
 library(vroom)
@@ -440,13 +440,13 @@ cat("Pop matches:", sum(merged$pop_orig == merged$pop_repl, na.rm = TRUE),
 cat("=== macro.rds construction complete ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ===================================================================== ####
 ####              SECTION C: daily_events.rds + daily_aqi.rds             ####
 #### ===================================================================== ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the necessary packages ####
 library(tidyverse)
@@ -620,7 +620,7 @@ cat("Event matches:", sum(merged$event_orig == merged$event_repl, na.rm = TRUE),
 cat("=== daily_aqi.rds construction complete ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ===================================================================== ####
 ####         SECTION D: full_era5.rds (weather data)                     ####
@@ -630,7 +630,7 @@ rm(list = ls()); gc()
 #### (02_weather.R, lines 1-359). Here we merge the intermediates.        ####
 #### ===================================================================== ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the necessary packages ####
 library(tidyverse)
@@ -707,13 +707,13 @@ cat("Sample rain matches:", sum(abs(orig$rain[idx] - data$rain[idx]) < 1e-6, na.
 cat("=== full_era5.rds construction complete ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ===================================================================== ####
 ####    SECTION E: daily_reg.rds + yearly_reg.rds + related datasets      ####
 #### ===================================================================== ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the necessary packages ####
 library(conflicted)
@@ -915,7 +915,7 @@ cat("Treatment matches:", sum(merged$treatment_orig == merged$treatment_repl, na
 cat("=== yearly_reg.rds construction complete ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ---- Step E3: Build year_monthly_reg.rds ---- ####
 cat("\nStep E3: Building year_monthly_reg.rds...\n")
@@ -976,7 +976,7 @@ cat("Treatment matches:", sum(merged$treatment_orig == merged$treatment_repl, na
 cat("=== Done ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ---- Step E4: Build yearly_rolling_reg.rds ---- ####
 cat("\nStep E4: Building yearly_rolling_reg.rds...\n")
@@ -1061,7 +1061,7 @@ cat("Treatment matches:", sum(merged$treatment_orig == merged$treatment_repl, na
 cat("=== Done ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ---- Step E5: Build sat_reg_test.rds ---- ####
 cat("\nStep E5: Building sat_reg_test.rds...\n")
@@ -1142,7 +1142,7 @@ cat("Treatment matches:", sum(merged$treatment_orig == merged$treatment_repl, na
 cat("=== Done ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ===================================================================== ####
 ####           SECTION F: Hourly data sets (appendix)                    ####
@@ -1154,7 +1154,7 @@ rm(list = ls()); gc()
 #### NOTE: This step requires ~32GB memory and ~2 hours on HPC ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load packages ####
 library(tidyverse)
@@ -1245,14 +1245,14 @@ for(i in seq_along(files)) {
 }
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Step 1b: Combine processed state files into hourly_pol_fixed.rds ####
 #### Output: 03_gen/09_revision/hourly_pol_fixed.rds (~75M rows x 7 cols) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load packages ####
 library(tidyverse)
@@ -1284,14 +1284,14 @@ write_rds(data, "03_gen/09_revision/hourly_pol_fixed.rds", compress = "gz")
 cat("Saved hourly_pol_fixed.rds\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Step 2: Create hourly_aqi.rds (AQI from pollutant concentrations) ####
 #### Output: 03_gen/09_revision/hourly_aqi.rds (~75M rows x 13 cols) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load packages ####
 library(tidyverse)
@@ -1382,14 +1382,14 @@ write_rds(data, "03_gen/09_revision/hourly_aqi.rds", compress = "gz")
 cat("Saved hourly_aqi.rds\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Step 3: Create hourly_now_cast.rds (EPA NowCast AQI) ####
 #### Output: 03_gen/09_revision/hourly_now_cast.rds (~71M rows x 7 cols) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load packages ####
 library(tidyverse)
@@ -1534,14 +1534,14 @@ write_rds(now_cast, "03_gen/09_revision/hourly_now_cast.rds", compress = "gz")
 cat("Saved hourly_now_cast.rds\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Step 4: Create hourly_reg_aqi.rds (merge NowCast with Uber + weather) ####
 #### Output: 03_gen/09_revision/hourly_reg_aqi.rds (~61M rows x 29 cols) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load packages ####
 library(tidyverse)
@@ -1604,14 +1604,14 @@ write_rds(pol, "03_gen/09_revision/hourly_reg_aqi.rds", compress = "gz")
 cat("Saved hourly_reg_aqi.rds\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### _____________________________________________________________________ ####
 #### Step 5: Create yearly_hourly_reg.rds (annual aggregation by hour) ####
 #### Output: 03_gen/09_revision/yearly_hourly_reg.rds (~194K rows x 21 cols) ####
 #### _____________________________________________________________________ ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Load packages ####
 library(tidyverse)
@@ -1663,14 +1663,14 @@ write_rds(yearly, file = "03_gen/09_revision/yearly_hourly_reg.rds")
 cat("Saved yearly_hourly_reg.rds\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ===================================================================== ####
 ####    SECTION G: nycmb_freq_2017.rds, nycmb_freq_2018.rds,             ####
 ####              nycmb_freq_2019.rds (NYC Mobility Survey frequency)     ####
 #### ===================================================================== ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the necessary packages ####
 library(tidyverse)
@@ -1775,13 +1775,13 @@ for (yr in c("2017", "2018", "2019")) {
 cat("=== nycmb_freq construction complete ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### ===================================================================== ####
 ####    SECTION H: pti_b.rds (ACS commuting data, public transport index) ####
 #### ===================================================================== ####
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
 
 #### Add the necessary packages ####
 library(data.table)
@@ -1871,4 +1871,372 @@ cat("Imputed matches:", sum(merged$imputed_orig == merged$imputed_repl), "/", nr
 cat("=== pti_b.rds construction complete ===\n\n")
 
 #### Clear the space ####
-rm(list = ls()); gc()
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
+
+
+#### ===================================================================== ####
+####        SECTION I: Power Generation Shares by FIPS and State          ####
+#### ===================================================================== ####
+#### Constructs coal_and_natgas_share_by_fips.xlsx and                     ####
+#### Coal_NatGas_Share_by_State_Year.xlsx from raw EIA-860 (plant         ####
+#### locations) and EIA-923 (generation) data.                            ####
+#### ===================================================================== ####
+
+#### Clear the space ####
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
+
+#### Add the necessary packages ####
+library(conflicted)
+library(tidyverse)
+library(readxl)
+library(data.table)
+library(sf)
+library(writexl)
+
+#### Solve conflicts ####
+conflict_prefer("filter", "dplyr")
+conflict_prefer("select", "dplyr")
+
+cat("=== Building Power Generation Shares by FIPS and State ===\n\n")
+
+set.seed(12345)
+
+#### Define paths ####
+eia_dir <- "02_data/06_other/8_Power_generation_states and zip"
+
+
+#### ---- Step I1: Process EIA-860 Plant Locations ---- ####
+cat("--- Step I1: Processing EIA-860 plant location files ---\n")
+
+## Column mappings for legacy EIA-860 column names
+eia860_col_map <- c(
+  PLNTCODE   = "Plant Code", PLANT_CODE = "Plant Code",
+  PLNTNAME   = "Plant Name", PLANT_NAME = "Plant Name",
+  PLNTSTATE  = "State",      STATE      = "State",
+  PLNTZIP    = "Zip",        ZIP5       = "Zip"
+)
+
+target_cols <- c("Plant Code", "Plant Name", "State", "Zip", "Latitude", "Longitude")
+
+## Keywords for dynamic header detection
+eia860_kw <- c("PLNTNAME", "PLANT_NAME", "PLNTCODE", "PLNTSTATE",
+               "STATE", "ZIP5", "PLNTZIP", "Plant Code", "Plant Name")
+
+## Extract year from filename: Y01 -> 2001, Y2017 -> 2017
+extract_year_860 <- function(fn) {
+  m <- regmatches(fn, regexpr("Y([0-9]+)", fn))
+  if (length(m) == 0) return(NA_character_)
+  yr <- sub("^Y", "", m)
+  if (nchar(yr) == 2) paste0("20", yr) else yr
+}
+
+## List and sort EIA-860 files (exclude .DBF, Plant_Names_Cleansed, notebooks)
+eia860_files <- list.files(file.path(eia_dir, "EIA860"),
+                           pattern = "\\.(xls|xlsx)$", ignore.case = TRUE,
+                           full.names = TRUE)
+eia860_files <- eia860_files[!grepl("Plant_Names_Cleansed", basename(eia860_files))]
+eia860_files <- sort(eia860_files)
+cat(sprintf("  Found %d EIA-860 files\n", length(eia860_files)))
+
+## Process each file
+eia860_list <- vector("list", length(eia860_files))
+for (k in seq_along(eia860_files)) {
+  f <- eia860_files[k]
+  fname <- basename(f)
+  raw <- read_excel(f, sheet = 1, col_names = FALSE, col_types = "text")
+
+  # Find header row dynamically
+  header_idx <- NA_integer_
+  for (i in seq_len(min(nrow(raw), 20))) {
+    if (any(as.character(raw[i, ]) %in% eia860_kw)) { header_idx <- i; break }
+  }
+  if (is.na(header_idx)) {
+    cat(sprintf("  WARNING: no header in %s, skipping\n", fname)); next
+  }
+
+  col_names <- as.character(raw[header_idx, ])
+  df <- raw[(header_idx + 1):nrow(raw), ]
+  names(df) <- col_names
+
+  # Apply legacy column mappings
+  for (old_nm in names(eia860_col_map)) {
+    hit <- which(names(df) == old_nm)
+    if (length(hit)) names(df)[hit[1]] <- eia860_col_map[old_nm]
+  }
+
+  # Add any missing target columns as NA
+  for (tc in target_cols) if (!(tc %in% names(df))) df[[tc]] <- NA_character_
+
+  df <- df[, target_cols, drop = FALSE]
+  df$year <- extract_year_860(fname)
+
+  cat(sprintf("  %s: %d rows\n", fname, nrow(df)))
+  eia860_list[[k]] <- df
+}
+
+## Bind and convert types
+plants <- bind_rows(eia860_list) %>% distinct()
+plants$`Plant Code` <- as.numeric(plants$`Plant Code`)
+plants$Latitude     <- as.numeric(plants$Latitude)
+plants$Longitude    <- as.numeric(plants$Longitude)
+
+## Deduplicate: within (Plant Code, State), drop rows without coords if any row has coords
+plants <- plants %>%
+  group_by(`Plant Code`, State) %>%
+  mutate(.has  = !is.na(Latitude) & !is.na(Longitude),
+         .any  = any(.has)) %>%
+  ungroup() %>%
+  filter(!(.any & !.has)) %>%
+  select(-.has, -.any)
+
+## Keep most precise coordinates per Plant Code (deterministic tie-breaking)
+decimal_digits <- function(x) {
+  ifelse(is.na(x), 0L, nchar(sub("^-?[0-9]*\\.?", "", as.character(x))))
+}
+
+plants <- plants %>%
+  mutate(.score = decimal_digits(Latitude) + decimal_digits(Longitude)) %>%
+  group_by(`Plant Code`) %>%
+  arrange(desc(.score), `Plant Name`) %>%
+  slice(1) %>%
+  ungroup() %>%
+  select(-.score)
+
+## Manual coordinate corrections (source: gem.wiki, cleanview.co, Google Maps)
+corrections <- tribble(
+  ~pc,    ~lat,       ~lng,
+  64850,  36.169,     -81.042,      # Wilkes Solar
+  62715,  33.5411,    -97.3593,     # Wildcat Creeks
+  63003,  41.0001,    -89.9968,     # Midland Wind
+  59929,  35.7201,    -81.417,      # Cline Solar Farm
+  58279,  42.219722,  -71.878333,   # Mass Midstate Solar 1
+  58275,  42.219722,  -71.878611,   # Mass Midstate Solar 3
+  58280,  42.164722,  -71.795,      # Millbury Solar
+  59641,  36.468,     -77.592,      # Garysburg Solar
+  58235,  39.424444,  -75.02        # Clayville
+)
+
+for (j in seq_len(nrow(corrections))) {
+  idx <- which(plants$`Plant Code` == corrections$pc[j])
+  if (length(idx) == 1) {
+    plants$Latitude[idx]  <- corrections$lat[j]
+    plants$Longitude[idx] <- corrections$lng[j]
+  }
+}
+
+## Rename for cleaner data.table usage later
+plants <- plants %>% rename(Plant.Code = `Plant Code`, Plant.Name = `Plant Name`)
+cat(sprintf("  Plant locations: %d unique plants\n\n", nrow(plants)))
+
+
+#### ---- Step I2: Process EIA-923 Generation Data ---- ####
+cat("--- Step I2: Processing EIA-923 generation files ---\n")
+
+## AER Fuel Type Code -> Description mapping
+aer_fuel_map <- c(
+  SUN = "Solar",          COL = "Coal",
+  DFO = "Distillate Petroleum",  GEO = "Geothermal",
+  HPS = "Hydro Pumped Storage",  HYC = "Hydro Conventional",
+  MLG = "Biogenic MSW & Landfill Gas",
+  NG  = "Natural Gas",   NUC = "Nuclear",
+  OOG = "Other Gases",   ORW = "Other Renewables",
+  OTH = "Other (nonbiogenic MSW)",
+  PC  = "Petroleum Coke", RFO = "Residual Petroleum",
+  WND = "Wind",           WOC = "Waste Coal",
+  WOO = "Waste Oil",      WWW = "Wood/Wood Waste"
+)
+
+## List EIA-923 files
+eia923_files <- list.files(file.path(eia_dir, "EIA923"),
+                           pattern = "\\.(xls|xlsx)$", ignore.case = TRUE,
+                           full.names = TRUE)
+eia923_files <- sort(eia923_files)
+cat(sprintf("  Found %d EIA-923 files\n", length(eia923_files)))
+
+## Process each file: extract key columns by name
+eia923_list <- vector("list", length(eia923_files))
+for (k in seq_along(eia923_files)) {
+  f <- eia923_files[k]
+  fname <- basename(f)
+  raw <- read_excel(f, sheet = 1, col_names = FALSE, col_types = "text")
+
+  # Find header row containing "Plant Name"
+  header_idx <- NA_integer_
+  for (i in seq_len(min(nrow(raw), 20))) {
+    if (any(grepl("Plant Name", as.character(raw[i, ]), fixed = TRUE))) {
+      header_idx <- i; break
+    }
+  }
+  if (is.na(header_idx)) {
+    cat(sprintf("  %s: SKIPPED (no header)\n", fname)); next
+  }
+
+  col_names <- as.character(raw[header_idx, ])
+  df <- raw[(header_idx + 1):nrow(raw), , drop = FALSE]
+  ## Collapse embedded newlines/whitespace in column names (2012+ files have multiline headers)
+  col_names <- gsub("\\s+", " ", trimws(col_names))
+  names(df) <- col_names
+
+  # Find key columns by regex (case-insensitive)
+  pid <- grep("^Plant.?I[Dd]$",            names(df), ignore.case = TRUE, value = TRUE)[1]
+  st  <- grep("State$",                    names(df), ignore.case = TRUE, value = TRUE)[1]
+  aer <- grep("(AER|MER).*Fuel.*Type.*Code", names(df), ignore.case = TRUE, value = TRUE)[1]
+  gen <- grep("NET.GENERATION.*mega",       names(df), ignore.case = TRUE, value = TRUE)[1]
+  yr  <- grep("^YEAR$",                    names(df), ignore.case = TRUE, value = TRUE)[1]
+
+  found <- c(pid, st, aer, gen, yr)
+  if (any(is.na(found))) {
+    missing <- c("PlantID","State","AER","NetGen","Year")[is.na(found)]
+    cat(sprintf("  %s: SKIPPED (missing: %s)\n", fname, paste(missing, collapse = ", ")))
+    next
+  }
+
+  df <- df[, found, drop = FALSE]
+  names(df) <- c("Plant.ID", "State", "AER.Fuel.Type.Code", "NETGEN_MWh", "Year")
+
+  cat(sprintf("  %s: %d rows\n", fname, nrow(df)))
+  eia923_list[[k]] <- df
+}
+
+## Bind and convert types
+gen_data <- bind_rows(eia923_list)
+gen_data$Plant.ID   <- as.numeric(gen_data$Plant.ID)
+gen_data$NETGEN_MWh <- as.numeric(gen_data$NETGEN_MWh)
+gen_data$Year       <- as.integer(gen_data$Year)
+
+## Map AER Fuel Type Code to description
+gen_data$AER.Fuel.Type <- aer_fuel_map[gen_data$AER.Fuel.Type.Code]
+gen_data <- gen_data[!is.na(gen_data$AER.Fuel.Type), ]
+
+cat(sprintf("  Generation data: %d rows, years %d-%d\n\n",
+            nrow(gen_data), min(gen_data$Year, na.rm = TRUE),
+            max(gen_data$Year, na.rm = TRUE)))
+
+
+#### ---- Step I3: State-Year Aggregation ---- ####
+cat("--- Step I3: Computing state-year generation shares ---\n")
+
+gen_dt <- as.data.table(gen_data)
+
+## Total generation by State-Year
+state_total <- gen_dt[, .(Total_NETGEN_MWh = sum(NETGEN_MWh, na.rm = TRUE)),
+                      by = .(Year, State)]
+
+## Coal subtotal
+state_coal <- gen_dt[AER.Fuel.Type == "Coal",
+                     .(Coal_NETGEN_MWh = sum(NETGEN_MWh, na.rm = TRUE)),
+                     by = .(Year, State)]
+
+## Natural gas subtotal
+state_ng <- gen_dt[AER.Fuel.Type == "Natural Gas",
+                   .(NatGas_NETGEN_MWh = sum(NETGEN_MWh, na.rm = TRUE)),
+                   by = .(Year, State)]
+
+## Merge and compute shares
+state_year <- merge(state_total, state_coal, by = c("Year", "State"), all.x = TRUE)
+state_year <- merge(state_year, state_ng,   by = c("Year", "State"), all.x = TRUE)
+state_year[is.na(Coal_NETGEN_MWh),   Coal_NETGEN_MWh   := 0]
+state_year[is.na(NatGas_NETGEN_MWh), NatGas_NETGEN_MWh := 0]
+state_year[, coal_share  := Coal_NETGEN_MWh  / Total_NETGEN_MWh]
+state_year[, natgas_share := NatGas_NETGEN_MWh / Total_NETGEN_MWh]
+
+## Save
+state_out <- file.path(eia_dir, "Coal_NatGas_Share_by_State_Year.xlsx")
+write_xlsx(as.data.frame(state_year), state_out)
+cat(sprintf("  Saved: %s (%d rows x %d cols)\n\n",
+            state_out, nrow(state_year), ncol(state_year)))
+
+
+#### ---- Step I4: FIPS Spatial Allocation via 50km Buffer ---- ####
+cat("--- Step I4: Allocating generation to FIPS via 50km buffer ---\n")
+
+## Load county shapefile (GEOID = 5-digit FIPS)
+counties <- st_read("02_data/05_shp/03_counties/cb_2018_us_county_20m.shp", quiet = TRUE)
+counties <- counties[, c("GEOID", "geometry")]
+names(counties)[1] <- "FIPS"
+
+## Get unique plant locations with valid coordinates that appear in gen_data
+plant_ids <- unique(gen_dt$Plant.ID)
+plant_locs <- plants[plants$Plant.Code %in% plant_ids &
+                     !is.na(plants$Latitude) & !is.na(plants$Longitude), ]
+cat(sprintf("  Plants with valid coordinates: %d / %d\n",
+            nrow(plant_locs), length(plant_ids)))
+
+## Create sf points (WGS84), reproject to EPSG:5070, buffer 50km
+plant_sf <- st_as_sf(plant_locs, coords = c("Longitude", "Latitude"), crs = 4326)
+plant_sf <- st_transform(plant_sf, 5070)
+counties_proj <- st_transform(counties, 5070)
+
+cat("  Buffering plants by 50km and joining with counties...\n")
+plant_buf <- st_buffer(plant_sf, 50000)
+joined <- st_join(plant_buf, counties_proj[, c("FIPS", "geometry")],
+                  join = st_intersects)
+
+## Build crosswalk: Plant.Code -> FIPS, with n_fips count
+xwalk <- as.data.table(st_drop_geometry(joined))[!is.na(FIPS), .(Plant.Code, FIPS)]
+xwalk <- unique(xwalk)
+xwalk[, n_fips := .N, by = .(Plant.Code)]
+cat(sprintf("  Crosswalk: %d plant-FIPS pairs, %d unique plants\n",
+            nrow(xwalk), uniqueN(xwalk$Plant.Code)))
+
+## Aggregate generation to Plant-Year-FuelType level
+gen_agg <- gen_dt[Plant.ID %in% plant_locs$Plant.Code,
+                  .(NETGEN_MWh = sum(NETGEN_MWh, na.rm = TRUE)),
+                  by = .(Plant.ID, Year, AER.Fuel.Type)]
+
+## Merge with crosswalk: each gen row gets one row per matched FIPS
+alloc <- merge(gen_agg, xwalk, by.x = "Plant.ID", by.y = "Plant.Code",
+               allow.cartesian = TRUE)
+
+## Allocate generation equally across matched counties
+alloc[, share_NETGEN := NETGEN_MWh / n_fips]
+alloc[, share_C  := fifelse(AER.Fuel.Type == "Coal",        share_NETGEN, 0)]
+alloc[, share_NG := fifelse(AER.Fuel.Type == "Natural Gas",  share_NETGEN, 0)]
+
+## Aggregate to Year-FIPS level
+fips_result <- alloc[, .(Total_NETGEN_MWh = sum(share_NETGEN),
+                         C_NETGEN_MWh     = sum(share_C),
+                         NG_NETGEN_MWh    = sum(share_NG)),
+                     by = .(Year, FIPS)]
+fips_result[, c_share  := fifelse(Total_NETGEN_MWh != 0,
+                                  C_NETGEN_MWh  / Total_NETGEN_MWh, NA_real_)]
+fips_result[, ng_share := fifelse(Total_NETGEN_MWh != 0,
+                                  NG_NETGEN_MWh / Total_NETGEN_MWh, NA_real_)]
+
+## Conservation QC check
+orig_total  <- gen_agg[, .(orig_mwh  = sum(NETGEN_MWh)),  by = .(Plant.ID, Year)]
+alloc_total <- alloc[,   .(alloc_mwh = sum(share_NETGEN)), by = .(Plant.ID, Year)]
+qc <- merge(orig_total, alloc_total, by = c("Plant.ID", "Year"))
+qc[, diff := alloc_mwh - orig_mwh]
+cat(sprintf("  QC: max |diff| = %.2e, rows with |diff| > 1e-6: %d / %d\n",
+            max(abs(qc$diff), na.rm = TRUE),
+            sum(abs(qc$diff) > 1e-6, na.rm = TRUE),
+            nrow(qc)))
+
+## Save
+fips_out <- file.path(eia_dir, "coal_and_natgas_share_by_fips.xlsx")
+write_xlsx(as.data.frame(fips_result), fips_out)
+cat(sprintf("  Saved: %s (%d rows x %d cols)\n\n",
+            fips_out, nrow(fips_result), ncol(fips_result)))
+
+
+#### ---- Step I5: Verification ---- ####
+cat("--- Step I5: Verification ---\n")
+
+## Verify column names match what 03_regressions_appendix.R expects
+fips_expected  <- c("Year", "FIPS", "Total_NETGEN_MWh", "C_NETGEN_MWh",
+                    "NG_NETGEN_MWh", "c_share", "ng_share")
+state_expected <- c("Year", "State", "Total_NETGEN_MWh", "Coal_NETGEN_MWh",
+                    "NatGas_NETGEN_MWh", "coal_share", "natgas_share")
+
+fips_ok  <- all(fips_expected  %in% names(fips_result))
+state_ok <- all(state_expected %in% names(state_year))
+cat(sprintf("  FIPS columns match:  %s\n", ifelse(fips_ok,  "YES", "NO")))
+cat(sprintf("  State columns match: %s\n", ifelse(state_ok, "YES", "NO")))
+cat(sprintf("  FIPS output:  %d rows x %d cols\n", nrow(fips_result), ncol(fips_result)))
+cat(sprintf("  State output: %d rows x %d cols\n", nrow(state_year), ncol(state_year)))
+
+cat("=== Power Generation construction complete ===\n\n")
+
+#### Clear the space ####
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
