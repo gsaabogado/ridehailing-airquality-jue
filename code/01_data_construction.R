@@ -1904,6 +1904,18 @@ set.seed(12345)
 #### Define paths ####
 eia_dir <- "02_data/06_other/8_Power_generation_states and zip"
 
+#### Check if output files already exist ####
+fips_file  <- file.path(eia_dir, "coal_and_natgas_share_by_fips.xlsx")
+state_file <- file.path(eia_dir, "Coal_NatGas_Share_by_State_Year.xlsx")
+
+if (file.exists(fips_file) && file.exists(state_file)) {
+  cat("Both EIA output files already exist — skipping Section I.\n")
+  cat("  ", fips_file, "\n")
+  cat("  ", state_file, "\n")
+  cat("Delete these files and re-run to rebuild from raw EIA data.\n\n")
+} else {
+cat("Output files not found — building from raw EIA-860/EIA-923 data.\n\n")
+
 
 #### ---- Step I1: Process EIA-860 Plant Locations ---- ####
 cat("--- Step I1: Processing EIA-860 plant location files ---\n")
@@ -2101,12 +2113,21 @@ for (k in seq_along(eia923_files)) {
 ## Bind and convert types
 gen_data <- bind_rows(eia923_list)
 gen_data$Plant.ID   <- as.numeric(gen_data$Plant.ID)
-gen_data$NETGEN_MWh <- as.numeric(gen_data$NETGEN_MWh)
 gen_data$Year       <- as.integer(gen_data$Year)
+
+## Clean NETGEN_MWh: strip commas/whitespace before conversion, then sanitize
+gen_data$NETGEN_MWh <- as.numeric(gsub("[, ]", "", gen_data$NETGEN_MWh))
+## Replace implausible values (|NETGEN| > 1e9 MWh ~ 5x US total) with NA
+gen_data$NETGEN_MWh[!is.na(gen_data$NETGEN_MWh) &
+                    abs(gen_data$NETGEN_MWh) > 1e9] <- NA_real_
 
 ## Map AER Fuel Type Code to description
 gen_data$AER.Fuel.Type <- aer_fuel_map[gen_data$AER.Fuel.Type.Code]
 gen_data <- gen_data[!is.na(gen_data$AER.Fuel.Type), ]
+
+## Drop rows with missing Year, Plant.ID, or State
+gen_data <- gen_data[!is.na(gen_data$Year) & !is.na(gen_data$Plant.ID) &
+                     !is.na(gen_data$State) & gen_data$State != "", ]
 
 cat(sprintf("  Generation data: %d rows, years %d-%d\n\n",
             nrow(gen_data), min(gen_data$Year, na.rm = TRUE),
@@ -2198,10 +2219,13 @@ fips_result <- alloc[, .(Total_NETGEN_MWh = sum(share_NETGEN),
                          C_NETGEN_MWh     = sum(share_C),
                          NG_NETGEN_MWh    = sum(share_NG)),
                      by = .(Year, FIPS)]
-fips_result[, c_share  := fifelse(Total_NETGEN_MWh != 0,
+fips_result[, c_share  := fifelse(Total_NETGEN_MWh > 0,
                                   C_NETGEN_MWh  / Total_NETGEN_MWh, NA_real_)]
-fips_result[, ng_share := fifelse(Total_NETGEN_MWh != 0,
+fips_result[, ng_share := fifelse(Total_NETGEN_MWh > 0,
                                   NG_NETGEN_MWh / Total_NETGEN_MWh, NA_real_)]
+
+## Drop rows with missing Year (from malformed EIA-923 entries)
+fips_result <- fips_result[!is.na(Year)]
 
 ## Conservation QC check
 orig_total  <- gen_agg[, .(orig_mwh  = sum(NETGEN_MWh)),  by = .(Plant.ID, Year)]
@@ -2237,6 +2261,8 @@ cat(sprintf("  FIPS output:  %d rows x %d cols\n", nrow(fips_result), ncol(fips_
 cat(sprintf("  State output: %d rows x %d cols\n", nrow(state_year), ncol(state_year)))
 
 cat("=== Power Generation construction complete ===\n\n")
+
+} ## end of else block (files did not exist)
 
 #### Clear the space ####
 rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
