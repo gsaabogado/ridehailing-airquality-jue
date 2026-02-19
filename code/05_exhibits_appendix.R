@@ -2346,3 +2346,116 @@ print(as.data.frame(diffs), digits = 3)
 
 #### Clear the space ####
 rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
+
+#### _____________________________________________________________________ ####
+#### Table I15: Weighted trip counts by mode and purpose (2009 and 2017)   ####
+#### _____________________________________________________________________ ####
+#### Clear the space ####
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
+
+#### Add the necessary packages ####
+library(haven)
+library(tidyverse)
+
+#### Load the NHTS trip-level data ####
+d <- read_dta("02_data/06_other/2_NHTS/temp/data_nhts.dta")
+
+#### No geographic filter for this table (unlike I13/I14) ####
+#### Keep only 2009 and 2017 ####
+d <- filter(d, year %in% c(2009, 2017))
+
+#### Mode definitions from table footnotes ####
+## 2009: LDV: TRPTRANS 1-8; Other: 20-21, 24, 97; Taxi: 19;
+##       Transit: 9-18; Walk/Bicycle: 22-23
+## 2017: LDV: 3-9; Other: 18-20, 97; Taxi/TNCs: 17;
+##       Transit: 10-16; Walk/Bicycle: 1-2
+mode_defs <- list(
+  "2009" = list(
+    LDV            = 1:8,
+    Other          = c(20, 21, 24, 97),
+    `Taxi/TNCs`    = 19,
+    Transit        = 9:18,
+    `Walk/Bicycle` = 22:23
+  ),
+  "2017" = list(
+    LDV            = 3:9,
+    Other          = c(18, 19, 20, 97),
+    `Taxi/TNCs`    = 17,
+    Transit        = 10:16,
+    `Walk/Bicycle` = 1:2
+  )
+)
+
+#### Trip purpose definitions ####
+## Work: WHYTRP1S == 10
+## Leisure: WHYTRP1S %in% c(50, 80)
+## Work & Leisure: both combined
+
+#### Compute weighted trip counts (WTTRDFIN / 1e8) ####
+weighted_count <- function(sub, codes) {
+  sum(sub$wttrdfin[sub$trptrans %in% codes], na.rm = TRUE) / 1e8
+}
+
+results <- list()
+for (yr in c(2009, 2017)) {
+  base <- filter(d, year == yr)
+  modes <- mode_defs[[as.character(yr)]]
+
+  ## Work & Leisure combined (WHYTRP1S in 10, 50, 80)
+  wl <- filter(base, whytrp1s %in% c(10, 50, 80))
+  ## Work only
+  wo <- filter(base, whytrp1s == 10)
+  ## Leisure only
+  le <- filter(base, whytrp1s %in% c(50, 80))
+
+  for (mode_name in names(modes)) {
+    codes <- modes[[mode_name]]
+    results[[length(results) + 1]] <- tibble(
+      Year = yr,
+      Mode = mode_name,
+      `Work & Leisure` = weighted_count(wl, codes),
+      `Work Trips`     = weighted_count(wo, codes),
+      `Leisure Trips`  = weighted_count(le, codes)
+    )
+  }
+}
+
+table_i15 <- bind_rows(results)
+
+#### Print the replicated table ####
+cat("\n=== Table I15: Weighted trip counts by mode and purpose (2009 and 2017) ===\n\n")
+print(as.data.frame(table_i15), digits = 6, row.names = FALSE)
+
+#### Verify against the LaTeX values ####
+target <- tribble(
+  ~Year, ~Mode,           ~t_WL,   ~t_Work, ~t_Leisure,
+  2009,  "LDV",           987.14,  414.79,  572.34,
+  2009,  "Other",          12.39,    5.08,    7.31,
+  2009,  "Taxi/TNCs",       1.95,    0.60,    1.35,
+  2009,  "Transit",        31.92,   16.94,   14.98,
+  2009,  "Walk/Bicycle",  172.34,   29.36,  142.97,
+  2017,  "LDV",           925.08,  391.32,  533.76,
+  2017,  "Other",          14.29,    8.22,    6.07,
+  2017,  "Taxi/TNCs",       7.20,    3.42,    3.78,
+  2017,  "Transit",        40.25,   24.54,   15.71,
+  2017,  "Walk/Bicycle",  148.30,   37.05,  111.24
+)
+
+comp <- left_join(table_i15, target, by = c("Year", "Mode"))
+comp <- comp %>% mutate(
+  diff_wl      = abs(`Work & Leisure` - t_WL),
+  diff_work    = abs(`Work Trips` - t_Work),
+  diff_leisure = abs(`Leisure Trips` - t_Leisure)
+)
+
+cat("\nCell-by-cell differences vs LaTeX values:\n")
+print(as.data.frame(select(comp, Year, Mode, diff_wl, diff_work, diff_leisure)),
+      digits = 4, row.names = FALSE)
+
+cat("\nMax absolute differences:\n")
+cat("  Work & Leisure:", max(comp$diff_wl, na.rm = TRUE), "\n")
+cat("  Work Trips:    ", max(comp$diff_work, na.rm = TRUE), "\n")
+cat("  Leisure Trips: ", max(comp$diff_leisure, na.rm = TRUE), "\n")
+
+#### Clear the space ####
+rm(list = setdiff(ls(), c("root", "code_dir", "data_raw", "data_gen", "results_dir", "figures_dir", "mc_cores"))); gc()
