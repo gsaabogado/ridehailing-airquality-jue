@@ -8,7 +8,7 @@ This repository contains the code and instructions to replicate all tables and f
 
 The data required to run this code is archived on Zenodo:
 
-> [DOI link to be added upon deposit]
+> <https://doi.org/10.5281/zenodo.18708962>
 
 Download the data archive and extract it into this repository so that the structure matches:
 

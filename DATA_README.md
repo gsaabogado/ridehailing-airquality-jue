@@ -5,7 +5,7 @@
 
 This archive contains all data required to replicate the paper. The code is available at:
 
-> [GitHub repository URL to be added]
+> <https://github.com/gsaabogado/ridehailing-airquality-jue>
 
 ---
 

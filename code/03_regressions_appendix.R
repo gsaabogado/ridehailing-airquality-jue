@@ -758,7 +758,7 @@ library(readxl)
 #### Note: These are binary outcomes estimated with E-TWFE logit + fe="vs". ####
 #### The marginaleffects package (v0.31+) cannot compute SEs for non-      ####
 #### Gaussian models with absorbed FEs (see etwfe GitHub issue #64).       ####
-#### We use cluster bootstrap SEs instead.                                 ####
+#### We use delete-one-cluster jackknife SEs instead.                      ####
 
 #### Load the regressions data ####
 data = read_rds("03_gen/04_reg/yearly_reg.rds")
@@ -799,41 +799,27 @@ sum_cols13 = lapply(agg, function(x) {
 sum_cols13$spec = names(agg)
 sum_cols13 = left_join(sum_cols13, fitted)
 
-#### Cluster bootstrap for standard errors (500 reps) ####
-set.seed(12345)
-B = 500
-cbsa_ids = unique(data$cbsa_id)
-n_cbsa = length(cbsa_ids)
+#### Delete-one-cluster jackknife for standard errors ####
+cbsa_ids = sort(unique(data$cbsa_id))
+G = length(cbsa_ids)
 
-boot_results = matrix(NA, nrow = B, ncol = 3,
-                      dimnames = list(NULL, c("NAAQS", "forest_fire", "ret_pp")))
-
-for (b in 1:B) {
-  boot_cbsa = sample(cbsa_ids, n_cbsa, replace = TRUE)
-  boot_list = lapply(seq_along(boot_cbsa), function(i) {
-    d = data[data$cbsa_id == boot_cbsa[i],]
-    d$cbsa_id = i
-    d
-  })
-  boot_data = rbindlist(boot_list)
-  boot_long = gather(boot_data, var, value, c(NAAQS:ret_pp))
-
-  for (v in c("NAAQS", "forest_fire", "ret_pp")) {
+for (v in c("NAAQS", "forest_fire", "ret_pp")) {
+  theta_jack = rep(NA_real_, G)
+  v_data = data_long[data_long$var == v, ]
+  for (g in 1:G) {
     tryCatch({
-      m_b = suppressWarnings(
+      d_g = v_data[v_data$cbsa_id != cbsa_ids[g], ]
+      m_g = suppressWarnings(
         etwfe(fml = value ~ 1, tvar = year, gvar = enter_year,
-              data = boot_long[boot_long$var == v,],
-              family = "logit", vcov = ~cbsa_id, fe = "vs"))
-      a_b = suppressWarnings(emfx(m_b, vcov = FALSE))
-      boot_results[b, v] = a_b$estimate[1]
+              data = d_g, family = "logit",
+              vcov = ~cbsa_id, fe = "vs"))
+      a_g = suppressWarnings(emfx(m_g, vcov = FALSE))
+      theta_jack[g] = a_g$estimate[1]
     }, error = function(e) {})
   }
-}
-
-#### Add bootstrap SEs to the results ####
-for (v in c("NAAQS", "forest_fire", "ret_pp")) {
-  boot_se = sd(boot_results[, v], na.rm = TRUE)
-  sum_cols13$std.error[sum_cols13$spec == v] = boot_se
+  theta_bar = mean(theta_jack, na.rm = TRUE)
+  se_jack = sqrt(((G - 1) / G) * sum((theta_jack[!is.na(theta_jack)] - theta_bar)^2))
+  sum_cols13$std.error[sum_cols13$spec == v] = se_jack
 }
 
 #### Check the results ####
@@ -909,7 +895,7 @@ rm(list = setdiff(ls(), c("sum_cols13", "sum_cols46"))); gc()
 
 #### Load the regressions data ####
 data = read_rds("03_gen/04_reg/yearly_reg.rds")
-tri = read_csv("../02_data/06_other/9_TRI/avgtotalrelease.csv")
+tri = read_csv("02_data/06_other/9_TRI/avgtotalrelease.csv")
 
 #### Transform the FIPS ####
 tri = mutate(tri, fips = str_pad(fips, width = 5, side = "left", pad = 0)) %>%
