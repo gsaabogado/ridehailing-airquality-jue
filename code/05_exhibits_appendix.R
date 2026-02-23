@@ -982,7 +982,7 @@ states = filter(states, !(NAME %in% c("Alaska", "Hawaii", "Puerto Rico")))
 pol = pol %>% group_by(fips) %>% summarise(pm25 = mean(pm25, na.rm = T))
 
 #### Add an indicator variable for MSAs ####
-uber = read_rds("03_gen/03_uber/Uber.rds")
+uber = read_rds("03_gen/03_uber/uber.rds")
 pol = mutate(pol, msa = ifelse(fips %in% uber$fips, 1, 0))
 
 #### Compute the average air pollution in all counties and in MSAs ####
